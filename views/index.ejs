@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>todos</h1>
+        <form action="/add" method="post">
+            <!-- <label for="task">Enter some task</label> -->
+            <input required class="todo-input" type="text" name="task" id="task" placeholder="Enter some task" />
+        </form>
+        <ul class="list">
+            <% todosCollection.forEach((element,index)=> { %>
+                <li class="d-flex">
+                    <form method="post" action="/toggle/<%=element._id%>">
+                        <input type="checkbox" id="<%=index%>" class="checkbox" name="toggleStatus"
+                            value="<%=element.isCompleted%>" onchange="this.form.submit();" <% if (element.isCompleted)
+                            { %>
+                        checked
+
+                        <% } %> >
+                            <!-- <input type="text" name="toggleVal" value=""> -->
+                    </form>
+
+                    <span class=<%=element.isCompleted ? "line-through" : "" %> >
+                        <%=element['caption']%>
+                    </span>
+
+                    <a href="/delete/<%=element._id %>" id="<%=index %>" class="delbtn">X</a>
+                </li>
+
+                <% }); %>
+        </ul>
+        <div class="footer">
+            <p>
+                <%=itemsLeft%> items left
+            </p>
+            <ul class="btnlist">
+                <a class="filter-btn" href="/" id="all">All</a>
+                <a class="filter-btn" href="/?isCompleted=false" id="active">Active</a>
+                <a class="filter-btn" href="/?isCompleted=true" id="completed">Completed</a>
+            </ul>
+            <p>clearAll</p>
+        </div>
+    </div>
+
+</body>
+<script>
+    const all = document.getElementById("all")
+    // all.addEventListener('click', clickbtn);
+    const active = document.getElementById("active")
+    // active.addEventListener('click', clickbtn);
+    const complted = document.getElementById("completed")
+    // complted.addEventListener('click', clickbtn);
+    // function clickbtn(e) {
+    const query = Object.fromEntries(new URLSearchParams(location.search).entries())
+    console.log();
+    if (query.isCompleted === undefined) {
+        all.classList.add('filter-btn-active')
+        active.classList.add('filter-btn')
+        complted.classList.add('filter-btn')
+    }
+    else if (query.isCompleted == 'false') {
+        active.classList.add('filter-btn-active')
+        all.classList.add('filter-btn')
+        complted.classList.add('filter-btn')
+    }
+    else if (query.isCompleted == 'true') {
+        complted.classList.add('filter-btn-active')
+        all.classList.add('filter-btn')
+        active.classList.add('filter-btn')
+    }
+
+</script>
+
+</html>

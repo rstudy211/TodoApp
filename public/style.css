@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  box-sizing: border-box;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+body {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 50%;
+}
+h1 {
+  width: 100%;
+  font-size: 100px;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(175, 47, 47, 0.15);
+}
+.todo-input {
+  width: 100%;
+  padding: 16px 16px 16px 60px;
+  border: none;
+  background-color: white;
+  box-shadow: 0 0px 5px rgb(0 0 0 / 20%);
+  /* box-shadow: inset 0 -2px 1px rgb(0 0 0 / 3%); */
+  font-size: 24px;
+  font-weight: 100;
+  font-style: italic;
+}
+.list {
+  /* margin-block-start: 1em; */
+  /* margin-block-end: 1em; */
+  /* padding-inline-start: 40px; */
+  width: 100%;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 0.2);
+}
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  font-size: 16px;
+  width: 100%;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 2%;
+}
+/* .list:hover input ~ .checkmark {
+  background-color: #ccc;
+} */
+.tickBox {
+}
+/* .p::after {
+  content: " - Remember this";
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+} */
+
+.list li form {
+  background-color: #fff;
+}
+.checkbox {
+  appearance: none;
+  height: 40px;
+  width: 40px;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px rgba(0, 0, 0, 0.261) solid;
+}
+.checkbox::after {
+  content: "✔";
+  font-size: 24px;
+  color: rgb(51, 167, 149);
+  display: none;
+}
+.checkbox:hover {
+  background-color: #d9d9d9;
+}
+.checkbox:checked::after {
+  display: block;
+}
+.list li span {
+  width: 100%;
+  margin-left: 33px;
+  background-color: white;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.line-through {
+  text-decoration: line-through;
+  font-weight: 100 !important;
+}
+.delbtn {
+  opacity: 0;
+  text-decoration: none;
+  border: none;
+  color: #cc9a9a;
+  padding: 3px;
+  font-weight: 300;
+  width: 5%;
+  background-color: #fff;
+  font-size: 28px;
+}
+li:hover > .delbtn {
+  opacity: 1;
+}
+.footer {
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px;
+  /* font-weight: 100; */
+  box-shadow: 0 1px 6px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6,
+    0 9px 1px -3px rgb(0 0 0 / 20%), 0 16px 0 -6px #f6f6f6,
+    0 17px 2px -6px rgb(0 0 0 / 20%);
+  /* box-shadow: 0 0px 10px rgb(0 0 0 / 20%);  */
+}
+.footer p {
+  font-weight: 100;
+  background-color: white;
+}
+.btnlist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+.filter-btn {
+  background-color: #fff;
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  /* border: 1px solid; */
+  border-radius: 3px;
+  font-weight: 100;
+}
+.filter-btn-active {
+  border: 1px solid #cc9a9a;
+  /* color: #cc9a9a; */
+}
